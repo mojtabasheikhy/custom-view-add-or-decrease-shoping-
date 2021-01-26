@@ -112,34 +112,34 @@ class my_btn : LinearLayout, View.OnClickListener, View.OnTouchListener, View.On
            {
                is_long_pressed_plus=true
 
-              autoincrimnet().run()
+               android.os.Handler().postDelayed( { autoincrimnet().run()},100L)
            }
            btn_mines.id-> {
 
                is_long_pressed_mines=true
-               autodicrimnet().run()
+               android.os.Handler().postDelayed( {autodicrimnet().run()},100L)
+
            }
 
        }
         return false
     }
 
-   inner class autoincrimnet:Runnable{
-        override fun run() {
+   inner class autoincrimnet:Runnable {
+       override fun run() {
+           if (is_long_pressed_plus) {
+               pluse_number()
+               android.os.Handler().postDelayed({ pluse_number() }, 100L)
 
-              pluse_number()
-            android.os.Handler().postDelayed({pluse_number()},100L)
+           }
+       }
+   }
+      inner class autodicrimnet:Runnable {
+          override fun run() {
 
-        }
-    }
-      inner class autodicrimnet {
-
-          fun run() {
-              Log.e("sd", "Sd")
               if (is_long_pressed_mines) {
                   mines_number()
                   android.os.Handler().postDelayed({ mines_number() }, 100L)
-
               }
           }
       }
